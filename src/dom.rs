@@ -1,10 +1,12 @@
+#![allow(dead_code)]
+
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 
 #[derive(PartialEq, Eq)]
 pub struct Node {
-    children: Vec<Node>,
-    node_type: NodeType,
+    pub children: Vec<Node>,
+    pub node_type: NodeType,
 }
 
 #[derive(PartialEq, Eq, Clone)]
@@ -16,8 +18,8 @@ pub enum NodeType {
 
 #[derive(PartialEq, Eq, Clone)]
 pub struct ElementData {
-    tag_name: String,
-    attributes: AttrMap,
+    pub tag_name: String,
+    pub attributes: AttrMap,
 }
 
 impl ElementData {
