@@ -92,6 +92,6 @@ impl fmt::Debug for ElementData {
         for (attr, value) in self.attributes.iter() {
             attributes_string.push_str(&format!(" {}=\"{}\"", attr, value));
         }
-        write!(f, "<{},{}>", self.tag_name, attributes_string)
+        write!(f, "<{}{}>", self.tag_name, attributes_string)
     }
 }
