@@ -5,7 +5,6 @@ use glutin;
 
 use gfx::traits::FactoryExt;
 use gfx::Device;
-// use gfx::Factory;
 
 use crate::command::DisplayCommand;
 use crate::layout;
