@@ -42,7 +42,6 @@ impl<'a> StyledNode<'a> {
 
     fn get_styles(element: &'a ElementData, stylesheet: &'a Stylesheet) -> PropertyMap<'a> {
         let mut styles = PropertyMap::new();
-
         for rule in &stylesheet.rules {
             for selector in &rule.selectors {
                 if selector_matches(element, &selector) {
@@ -90,7 +89,7 @@ impl<'a> StyledNode<'a> {
         println!("{}{:?}", indent, self);
 
         for child in self.children.iter() {
-            pretty_print(&child, indent_size + 2);
+            child.pretty_print(indent_size + 2);
         }
     }
 }
