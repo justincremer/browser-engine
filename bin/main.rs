@@ -4,8 +4,10 @@ use browser_engine::{command, css, css_parser, dom, html_parser, layout, render,
 use std::env;
 use std::fs::File;
 use std::io::{BufReader, Read};
+use std::time::Instant;
 
 fn main() {
+    let start_time = Instant::now();
     let nodes = get_html();
     for n in nodes.iter() {
         n.pretty_print(0);
@@ -25,9 +27,17 @@ fn main() {
 
     let layout_tree = layout::layout_tree(&style_tree_root, viewport);
     layout_tree.pretty_print(0);
+    println!(
+        "Took {} milliseconds to render",
+        (Instant::now() - start_time).as_millis()
+    );
 
     let display_commands = command::build_display_commands(&layout_tree);
     render::render_loop(&display_commands);
+    println!(
+        "Took {} milliseconds to complete",
+        (Instant::now() - start_time).as_millis()
+    );
 }
 
 fn get_html() -> Vec<dom::Node> {
